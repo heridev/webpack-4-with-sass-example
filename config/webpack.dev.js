@@ -1,7 +1,25 @@
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+  devtool: 'inline-source-map',
+  mode: 'development',
+
+  devServer: {
+    historyApiFallback: true,
+    stats: "errors-only", // What bundle info do we want to show?
+    inline: true, // Takes care of live-reloading (allows for HMR)
+    open: true, // Opens page automatically
+    progress: true,
+    publicPath: "/",
+    compress: true, // Enable gzip compression,
+    port: 3001
+  },
+
   module: {
     rules: [
       {
@@ -19,19 +37,6 @@ module.exports = {
             options: { minimize: true }
           }
         ]
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader"
-        ]
       }
     ]
   },
@@ -39,10 +44,6 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
     })
   ]
-};
+});

@@ -11,16 +11,21 @@ This webpack 4 configuration example includes:
 
 All you need to start developing is run your server in development mode:
 ```
-npm run dev
+npm run webpack-dev-server
 ```
 
 If you want to run it on production mode:
 ```
-npm run build
+npm run webpack-prod-server
+```
+
+or you can generate the version ready for production running:
+```
+npm run webpack-prod
 ```
 
 That will generate the files within /dist folder and then just open it
-up the index.html in you browser.
+up the index.html in your browser.
 
 ## Contributing
 
