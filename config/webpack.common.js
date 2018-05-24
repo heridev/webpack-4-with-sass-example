@@ -45,10 +45,39 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
-          "postcss-loader",
           "sass-loader"
         ]
-      }
+      },
+      {
+        test: /\.scss$/,
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [require('autoprefixer')]
+        }
+      },
+      {
+        test: /\.woff/,
+        loader: "url-loader",
+        options: {
+          limit: 10000,
+          mimetype: "application/font-woff",
+          name: "font/[hash].[ext]"
+        }
+      },
+      {
+        test: /\.woff2/,
+        loader: "url-loader",
+        options: {
+          limit: 10000,
+          mimetype: "application/font-woff2",
+          name: "font/[hash].[ext]"
+        }
+      },
+
+      {
+        test: /\.(ttf|eot|svg|otf)/,
+        loader: "file-loader"
+      },
 
     ]
   }

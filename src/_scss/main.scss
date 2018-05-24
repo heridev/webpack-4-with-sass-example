@@ -1,12 +1,22 @@
-$color-orange: #f98a09;
+/* here we import our colors from variables */
+@import "./variables";
+@import "./icomoon";
+
 .main {
+
   .some-nested-thing {
     background: yellow;
   }
+
+  p {
+    font-family: "system-ui";
+  }
   background: $color-orange;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+
+  .big-icon {
+    font-size: 30px;
+  }
 }
+
+

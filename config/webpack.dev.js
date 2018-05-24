@@ -17,7 +17,7 @@ module.exports = merge(common, {
     progress: true,
     publicPath: "/",
     compress: true, // Enable gzip compression,
-    port: 3001
+    //port: 3001
   },
 
   module: {

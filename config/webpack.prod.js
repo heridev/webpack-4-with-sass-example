@@ -53,29 +53,38 @@ module.exports = merge(common, {
   optimization: {
     // if we do not want to uglify it
     // we can enable this option
-    minimize: true,
-    minimizer: [
-      new UglifyJSPlugin({
-        sourceMap: true,
-        uglifyOptions: {
-          compress: {
-            inline: false
-          }
-        }
-      })
-    ],
-    runtimeChunk: false,
+    //minimize: true,
+    //minimizer: [
+      //new UglifyJSPlugin({
+        //sourceMap: true,
+        //uglifyOptions: {
+          //compress: {
+            //inline: false
+          //}
+        //}
+      //})
+    //],
+    //runtimeChunk: false,
     splitChunks: {
       cacheGroups: {
-        default: false,
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor_app',
-          chunks: 'all',
-          minChunks: 2
+          name: "vendors",
+          chunks: "all"
         }
       }
     }
+    //splitChunks: {
+      //cacheGroups: {
+        //default: false,
+        //commons: {
+          //test: /[\\/]node_modules[\\/]/,
+          //name: 'vendor_app',
+          //chunks: 'all',
+          //minChunks: 2
+        //}
+      //}
+    //}
   },
   plugins: [
     new HtmlWebPackPlugin({
